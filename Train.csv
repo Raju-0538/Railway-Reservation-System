@@ -1,0 +1,9 @@
+train_number,train_name,source,destination,price,available_seats,seat_numbers
+101,Vandhe Bharath,Vizag,Chennai,2000,8,"[1, 2, 3, 4, 9, 10, 11, 12]"
+102,MEMU Express,Vizag,Kakinada,2000,10,"[1,2,3,4,5,6,7,8,9,10]"
+103,Kachiguada Express,Kachiguda,Nandyala,1000,20,"[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]"
+104,Kachiguada Express,Vizag,Chennai,1000,20,"[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]"
+105,Kachiguada Express,Vizag,Chennai,1000,7,"[1, 2, 3, 4, 5, 6, 7]"
+106,Kachiguada Express,Vizag,Chennai,1000,7,"[1, 2, 3, 4, 5, 6, 7]"
+107,Kachiguada Express,Vizag,Chennai,1000,7,"[1, 2, 3, 4, 5, 6, 7]"
+116,Kachiguada Express,Vizag,Chennai,1000,6,"[5, 6, 7]"

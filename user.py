@@ -51,6 +51,7 @@ class User:
         with open('Train.csv','r') as file:
             read = csv.DictReader(file)
             count = 0
+            print('-'*10,"Available Trains are : ",'-'*10)
             for row in read:
                 if row['source'] == source and row['destination'] == destination:
                     count += 1
@@ -62,6 +63,7 @@ class User:
                     print(f"Available Seats Numbers : {row['seat_numbers']}")
             if count == 0:
                 print("There is no trains available in the route")
+            print('-'*20,'THE END','-'*20)
     def ViewAvailableSeats(self):
         with open('Train.csv','r') as file:
             read = csv.DictReader(file)
@@ -69,8 +71,8 @@ class User:
             file.seek(78)
             if count >= 0:
                 # print(list(read))
+                print('-'*10,"Available Trains are : ",'-'*10)
                 for row in read:
-                    print(row['available_seats'])
                     if int(row['available_seats']) > 0:
                         print('*'*50)
                         print(f"Train Number : {row['train_number']}")
@@ -80,6 +82,7 @@ class User:
                         print(f"Available Seats Numbers : {row['seat_numbers']}")
             else:
                 print("No Trains Available for Booking !")
+        print('-'*20,'THE END','-'*20)
     def BookTicket(self,train_number,quantity,seat_nos):
         with open('Train.csv','r') as file1:
             read1 = csv.DictReader(file1)

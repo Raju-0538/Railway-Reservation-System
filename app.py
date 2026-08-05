@@ -31,10 +31,13 @@ if __name__ == "__main__":
                         print(f"Execution is stopped due to {e}")
                     while choice2 == "Login Successfull !":
                         try:
-                            print("1. Add Train\n2. Delete Train\n3. Update Route\n4. Update Ticket Price\n5. View Trains Information\n6. See All Users\n7. Logout")
+                            print("1.View All Users\n2. View All Booked Tickets\n3. Add Train\n4. Delete Train\n5. Update Route\n6. Update Ticket Price\n7. View Trains Information\n8. Logout")
                             n = int(input("Enter your choice from 1-7: "))
-
                             if n == 1:
+                                obj.ViewUsers()
+                            elif n == 2:
+                                obj.ViewAllBookedTickets()
+                            if n == 3:
                                 try:
                                     tnumber = int(input("Enter Train Number : "))
                                     tname = input("Enter Train Name : ").title()
@@ -53,13 +56,13 @@ if __name__ == "__main__":
                                 except Exception as e:
                                     print(f"Execution is stopped due to {e}")
                                 
-                            elif n == 2:
+                            elif n == 4:
                                 try:
                                     tnumber = int(input("Enter Train Number : "))
                                     print(obj.DeleteTrain(tnumber))
                                 except Exception as e:
                                     print(e)
-                            elif n == 3:
+                            elif n == 5:
                                 try:
                                     tnumber = int(input("Enter the Train Number : "))
                                     new_source = input("Enter the New Source : ").title()
@@ -68,18 +71,16 @@ if __name__ == "__main__":
                                     print(obj.UpdateRoute(tnumber,new_source,new_destination,new_price))
                                 except Exception as e:
                                     print(f"Execution is stopped due to {e}")
-                            elif n == 4:
+                            elif n == 6:
                                 try:
                                     tnumber = int(input("Enter Train Number : "))
                                     New_price = int(input("Enter the New Price of Ticket : "))
                                     print(obj.UpdatePrice(tnumber,New_price))
                                 except Exception as e:
                                     print(f"Execution is stopped due to {e}")
-                            elif n == 5:
-                                obj.ViewAvailableSeats()
-                            elif n == 6:
-                                obj.ViewUsers()
                             elif n == 7:
+                                obj.ViewAvailableSeats()
+                            elif n == 8:
                                 print("Thank you for your Service !")
                                 exit()
                             else:
@@ -156,21 +157,3 @@ if __name__ == "__main__":
 
     except Exception as e:
         print(e)
-
-        # name = input("Name : ")
-        # pas = input("Password : ")
-        # email = input("Email : ")
-        # obj = User(email,pas)
-        # obj.ViewAvailableSeats()
-        # obj = Admin(email,pas)
-        # obj.SearchTrain('Vizag','Chennai')
-        # print(obj.SearchTrain('Vizag','Chennai'))
-        # print(obj.UpdateRoute(101,'JRG','HYD',2000))
-        # obj = Admin('raju@gmail.com','Raju@9030')
-        # print(obj.AddTrain('101','Vandhe Bharath','Vizag','Chennai',2000,15))
-        # print(obj.AddTrain('102','MEMU Express','Vizag','Kakinada',2000,10))
-        # print(obj.AddTrain('103','Kachiguada Express','Kachiguda','Nandyala',1000,20))
-        # print(obj.AddTrain(train_number=104,train_name='Kachiguada Express',source='Vizag',destination='Chennai',price=1000,available_seats = 20))
-        # print(obj.BookTicket(106,5))
-
-    # print(obj.DeleteTrain(101))

@@ -64,6 +64,32 @@ class Admin(User):
                         'seat_numbers' : list(seat_numbers)
                     })
                 return "Added Successfully !"
+    def ViewAllUsers(self):
+        if not os.path.exists('User.csv') :
+            return "There is no users !"
+        with open('User.csv','r') as file:
+            read = csv.DictReader(file)
+            print('-'*20,'ALL UESRS','-'*20)
+            for row in read:
+                print(f"User Name : {row['Name']}")
+                print(f"Email : {row['email']}")
+                print(f"Password : {row['Password']}")
+                print('*'*50)
+            print('-'*20,'THE END','-'*20)
+    def ViewAllBookedTickets(self):
+        if not os.path.exists('Booked_Tickets.csv'):
+            return "There is No Tickets Booked !"
+        with open('Booked_Tickets.csv','r') as file:
+            read = csv.DictReader(file)
+            print('-'*20,'BOOKED TICKETS','-'*20)
+            for row in read:
+                print(f"User Email : {row['User_email']}")
+                print(f"Train Number : {row['train_number']}")
+                print(f"No of Tickets Booked : {row['Booked_seats']}")
+                print(f"Booked Seat Numbers : {row['seat_numbers']}")
+                print('*'*50)
+            print('-'*20,'THE END','-'*20)
+
     def DeleteTrain(self,train_number):
         if not os.path.exists('Train.csv'):
             return "There is no trains available to delete !"

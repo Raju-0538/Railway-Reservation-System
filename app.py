@@ -31,12 +31,13 @@ if __name__ == "__main__":
                         print(f"Execution is stopped due to {e}")
                     while choice2 == "Login Successfull !":
                         try:
-                            print("1.View All Users\n2. View All Booked Tickets\n3. Add Train\n4. Delete Train\n5. Update Route\n6. Update Ticket Price\n7. View Trains Information\n8. Logout")
-                            n = int(input("Enter your choice from 1-7: "))
+                            print("1. View All Users\n2. View All Booked Tickets\n3. Add Train\n4. Delete Train\n5. Update Route\n6. Update Ticket Price\n7. View Trains Information\n8. Logout")
+                            n = int(input("Enter your choice from 1-8: "))
                             if n == 1:
-                                obj.ViewUsers()
+                                    obj.ViewUsers()
                             elif n == 2:
-                                obj.ViewAllBookedTickets()
+                                
+                                    obj.ViewAllBookedTickets()
                             if n == 3:
                                 try:
                                     tnumber = int(input("Enter Train Number : "))
@@ -114,44 +115,45 @@ if __name__ == "__main__":
                         try:
                             print("1. Search train\n2. View Available Seats\n3. Book Tickets\n4. View Booked Seats\n5. Cancel Tickets\n6. Logout")
                             choice1 = int(input("Enter your choice from 1 to 6 : "))
+                        
+                            if choice1 == 1:
+                                try:
+                                    source = input("Enter Source : ").title()
+                                    dest = input("Enter the Destination : ").title()
+                                    obj.SearchTrain(source,dest)
+                                except Exception as e:
+                                    print(f"Execution is stopped due to {e}")
+                            elif choice1 == 2:
+                                obj.ViewAvailableSeats()
+                            elif choice1 == 3:
+                                try:
+                                    tnumber = int(input("Enter the Train Number : "))
+                                    print("Before Entering the No of Tickets please Verify the Available Seats !")
+                                    quantity = int(input("Enter the No of Tickets : "))
+                                    seat_numbers = list(map(int,input("Enter the Seat Numbers in single line with commas : ").split(',')))
+                                    print(obj.BookTicket(tnumber,quantity,seat_numbers))
+                                except Exception as e:
+                                    print(f"Execution is stopped due to {e}")
+                            elif choice1 == 4:
+                                obj.ViewBookedTickets()
+                            elif choice1 == 5:
+                                try:
+                                    tnumber = int(input("Enter Train Number : "))
+                                    print("Before Entering the No of Seats Check your total No of Tickets")
+                                    quantity = int(input("Enter the No of Tickets : "))
+                                    print("Before Entering the Seats Numbers Check your Booked Tickets Seat Numbers")
+                                    seat_numbers = list(map(int,input("Enter the Seat Numbers in single line with commas : ").split(',')))
+                                    res = obj.CancelTicket(tnumber,quantity,seat_numbers)
+                                    print(res)
+                                except Exception as e:
+                                    print(f"Execution is stopped due to {e}")
+                            elif choice1 == 6:
+                                print("Thanks for Visiting !")
+                                exit()
+                            else:
+                                print("Enter valid choice form 1 to 6")
                         except Exception as e:
                             print(f"Execution is stopped due to {e}")
-                        if choice1 == 1:
-                            try:
-                                source = input("Enter Source : ").title()
-                                dest = input("Enter the Destination : ").title()
-                                obj.SearchTrain(source,dest)
-                            except Exception as e:
-                                print(f"Execution is stopped due to {e}")
-                        elif choice1 == 2:
-                            obj.ViewAvailableSeats()
-                        elif choice1 == 3:
-                            try:
-                                tnumber = int(input("Enter the Train Number : "))
-                                print("Before Entering the No of Tickets please Verify the Available Seats !")
-                                quantity = int(input("Enter the No of Tickets : "))
-                                seat_numbers = list(map(int,input("Enter the Seat Numbers in single line with commas : ").split(',')))
-                                print(obj.BookTicket(tnumber,quantity,seat_numbers))
-                            except Exception as e:
-                                print(f"Execution is stopped due to {e}")
-                        elif choice1 == 4:
-                            obj.ViewBookedTickets()
-                        elif choice1 == 5:
-                            try:
-                                tnumber = int(input("Enter Train Number : "))
-                                print("Before Entering the No of Seats Check your total No of Tickets")
-                                quantity = int(input("Enter the No of Tickets : "))
-                                print("Before Entering the Seats Numbers Check your Booked Tickets Seat Numbers")
-                                seat_numbers = list(map(int,input("Enter the Seat Numbers in single line with commas : ").split(',')))
-                                res = obj.CancelTicket(tnumber,quantity,seat_numbers)
-                                print(res)
-                            except Exception as e:
-                                print(f"Execution is stopped due to {e}")
-                        elif choice1 == 6:
-                            print("Thanks for Visiting !")
-                            exit()
-                        else:
-                            print("Enter valid choice form 1 to 6")
             except Exception as e:
                 print(f"Execution is stopped due to {e}")
 

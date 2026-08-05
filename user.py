@@ -143,7 +143,6 @@ class User:
             if f == 0:
                 return "Invalid Train Number !"
         return "Tickets Booked Successfully !"
-            
 
     def CancelTicket(self, train_number, quantity, seat_nos):
         with open('Booked_Tickets.csv', 'r') as file:
@@ -217,3 +216,33 @@ class User:
         if cancel_success:
             return "Tickets Cancelled Successfully!"
         return "Cancellation Failed!"
+    def ViewBookedTickets(self):
+        if not os.path.exists("Booked_Tickets.csv"):
+            return "No Booked Tickets Found!"
+        found = 0
+        with open("Booked_Tickets.csv", "r") as file1:
+            read1 = csv.DictReader(file1)
+            print('-'*20,'Booked Tickets','-'*20)
+            for row1 in read1:
+                if row1["User_email"] == self.email:
+                    found += 1
+                    with open("Train.csv", "r") as file2:
+                        read2 = csv.DictReader(file2)
+                        for row2 in read2:
+                            if row2["train_number"] == row1["train_number"]:
+                                
+                                print("\nTrain Number     :", row2["train_number"])
+                                print("Train Name       :", row2["train_name"])
+                                print("Source           :", row2["source"])
+                                print("Destination      :", row2["destination"])
+                                print("Booked Seats     :", row1["Booked_seats"])
+                                print("Seat Numbers     :", row1["seat_numbers"])
+                                print("Price Per Ticket :", row2["price"])
+
+                                total = int(row2["price"]) * int(row1["Booked_seats"])
+                                print("Total Price      :", total)
+                                print('*'*50)
+            print('-'*20,'THE END','-'*20)   
+        if found == 0:
+            return "You have not booked any tickets."
+        return "Booked Tickets Displayed Successfully."

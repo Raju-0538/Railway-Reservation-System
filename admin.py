@@ -1,9 +1,10 @@
 import csv
 import os
+from user import User
 
 
 fields = ['train_number','train_name','source','destination','price','available_seats','seat_numbers']
-class Admin:
+class Admin(User):
     def __init__(self,email,password):
         self.email = email
         self.password = password
@@ -43,7 +44,7 @@ class Admin:
                         return "Login Successfull !"
                     
             return "Invalid Email or password !" 
-    def AddTrain(self,train_number,train_name,source,destination,price,available_seats,seat_numbers):
+    def AddTrain(self,train_number:int,train_name:str,source:str,destination:str,price:int,available_seats:int,seat_numbers:list):
             with open('Train.csv','r',newline="") as file:
                 read = csv.DictReader(file)
                 for row in read:
@@ -135,4 +136,16 @@ class Admin:
                     writer.writeheader()
                     writer.writerows(res)
                 return "Price updated Successfully"
+    def ViewUsers(self):
+        if not os.path.exists('User.csv'):
+            return "No Users Found !"
+        with open('User.csv','r') as file:
+            read = csv.DictReader(file)
+            print('-'*20,'Users Details','-'*20)
+            for row in read:
+                print(f"User Name : {row['Name']}")
+                print(f"User Email : {row['email']}")
+                print(f"User Password : {row['Password']}")
+                print('*'*40)
+            print('-'*20,'THE END','-'*20)
 
